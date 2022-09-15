@@ -9,7 +9,7 @@ const cardsMarkup = createGallaryCardMarkup(galleryItems)
 galleryContainer.insertAdjacentHTML('beforeend', cardsMarkup)
 
 function createGallaryCardMarkup(galleryItems) {
-  return galleryItems.map (({preview, original,description}) => {
+  return galleryItems.map (({preview,original,description}) => {
     return `<div class="gallery__item">
   <a class="gallery__link" href="${original}">
     <img
@@ -37,7 +37,7 @@ function onGalleryContainerClick(event) {
   
   const gallaryOriginalImg = event.target.dataset.source;
 
-  const instance = basicLightbox.create(`<img scr = "${gallaryOriginalImg}" width ="800" height = "600">`);
+  const instance = basicLightbox.create(`<img src = "${gallaryOriginalImg}" width ="800" height = "600">`);
   instance.show()
 
 
