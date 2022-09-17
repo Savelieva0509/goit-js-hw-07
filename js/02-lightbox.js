@@ -17,21 +17,29 @@ function createGallaryCardMarkup(galleryItems) {
     .join('')
 }
 
+
 galleryContainer.addEventListener("click", onGalleryContainerClick)
+
+function createSimpleLightbox() {
+    const lightbox = new SimpleLightbox('.gallery a', { 
+        captionsData: "alt",
+        captionDelay: 250,
+    });
+
+    return lightbox;
+}
+
 
 function onGalleryContainerClick(event) {
   event.preventDefault()
 
-  const isGalleryEl = event.target.classList.contains('gallery__image');
+  const isGalleryEl = event.target.nodeName === 'IMG';
 
   if (!isGalleryEl) {
     return
   }
 
-
-    const lightbox = new SimpleLightbox('.gallery a', { 
-        captionsData: "alt",
-        captionDelay: 250,
-    });
-    
+   createSimpleLightbox()
 }   
+
+
