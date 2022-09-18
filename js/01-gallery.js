@@ -37,22 +37,19 @@ function onGalleryContainerClick(event) {
   
   const gallaryOriginalImg = event.target.dataset.source;
 
-  const instance = basicLightbox.create(`<img src = "${gallaryOriginalImg}" width ="800" height = "600">`);
-  instance.show()
-  
-  galleryContainer.addEventListener("keydown", onGalleryCloseEsc)
-  galleryContainer.removeEventListener("keydown", onGalleryShowEsc)
-  
-
-  function onGalleryCloseEsc(event) {
+  const instance = basicLightbox.create(`<img src = "${gallaryOriginalImg}" width ="800" height = "600">`, {
+    onShow: (instance) => {
+      galleryContainer.addEventListener('keydown', onGalleryCloseEsc)
+    },
+    onClose: (instance) => {
+      galleryContainer.removeEventListener('keydown', onGalleryCloseEsc)
+    },
+  })
+   function onGalleryCloseEsc(event) {
     if (event.code === "Escape") {
       instance.close()
     }
   }
-
-  function onGalleryShowEsc(event) {
-    if (event.code === "Escape") {
-      instance.show()
-    }
-  }
+  
+  instance.show()
 }

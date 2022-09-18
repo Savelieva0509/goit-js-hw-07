@@ -20,15 +20,10 @@ function createGallaryCardMarkup(galleryItems) {
 
 galleryContainer.addEventListener("click", onGalleryContainerClick)
 
-function createSimpleLightbox() {
-    const lightbox = new SimpleLightbox('.gallery a', { 
+const lightbox = new SimpleLightbox(".gallery a", { 
         captionsData: "alt",
         captionDelay: 250,
     });
-
-    return lightbox;
-}
-
 
 function onGalleryContainerClick(event) {
   event.preventDefault()
@@ -38,8 +33,6 @@ function onGalleryContainerClick(event) {
   if (!isGalleryEl) {
     return
   }
-
-   createSimpleLightbox()
 }   
 
 
